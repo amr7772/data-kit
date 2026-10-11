@@ -1,4 +1,4 @@
-# Data Kit
+# Data Kit (حقيبة البيانات)
 
 A skill for Claude Code and Codex that helps journalists get numbers from free institutional data sources and check them before publishing.
 
@@ -20,6 +20,11 @@ Most requests were tested on 11 October 2026. The file marks the ones that need 
 - Our World in Data shows a 2025 poverty figure for Egypt that comes from a 2021 survey. The `original_year` column gives it away.
 - ILOSTAT flags a series break (`obs_status = B`) in Egypt's 2024 youth unemployment figure.
 - The cloud cover on a Sentinel-2 scene is for the whole 110 km tile, not for your area.
+- Night-light images change with the moon. To compare before and after, use the same layer, box and size, and pick two new-moon nights.
+
+## Example: a map from space
+
+Asked for a map of the blackout in Gaza after 7 October 2023, the skill pulls two NASA GIBS night-light images of the same area, on two new-moon nights: 15 September and 13 November 2023. Gaza's coast is lit in the first and almost dark in the second. The project page shows both. The skill also says what the images can't do: they are for display, and a number like "light fell by X%" needs Black Marble's corrected monthly values.
 
 ## Install
 
