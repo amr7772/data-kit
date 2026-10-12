@@ -4,7 +4,7 @@
 
 By [Amr Eleraqi](https://github.com/aeleraqi), InfoTimes · One SKILL.md · MIT · Version 0.3.0
 
-[**Download SKILL.md**](https://raw.githubusercontent.com/amr7772/data-kit/main/SKILL.md) · [Read the file](SKILL.md) · [See the examples](https://amr7772.github.io/data-kit/#examples) · [Browse sources](https://amr7772.github.io/data-kit/#sources)
+[**Download SKILL.md**](https://raw.githubusercontent.com/aeleraqi/data-kit/main/SKILL.md) · [Read the file](SKILL.md) · [See the examples](https://aeleraqi.github.io/data-kit/#examples) · [Browse sources](https://aeleraqi.github.io/data-kit/#sources)
 
 Ask a question the way you'd ask a colleague, in Arabic or English. The skill picks an institutional source, builds the request, fetches the data, and then checks it the way a data editor would: what the indicator measures, which year a number really belongs to, breaks in the series, revisions, units. Every answer ends with an attribution line you can paste into a story and the exact request, so you can run it again next month.
 
@@ -43,7 +43,7 @@ Then keep going: "add Tunisia", "show it as a line chart", "give me a CSV".
 
 ## Install one file
 
-Save [SKILL.md](https://raw.githubusercontent.com/amr7772/data-kit/main/SKILL.md) in your project:
+Save [SKILL.md](https://raw.githubusercontent.com/aeleraqi/data-kit/main/SKILL.md) in your project:
 
 ```text
 Claude Code  .claude/skills/data-kit/SKILL.md
@@ -72,7 +72,7 @@ Some traps the file teaches, each found while testing:
 - A Sentinel-2 scene's cloud cover is for the whole 110 km tile, not your area.
 - In WMS 1.3.0 the map box is latitude first; in STAC it's longitude first.
 
-No formal evaluation of the skill has been run yet. The tests check the examples, the catalogue and the helper code, not how well an assistant follows the instructions. Check dates, coverage and source notes before you publish a number.
+A [paired test](docs/EVALUATION.md) ran 18 fresh answers to three saved-data questions, half without the skill and half with it, graded blind against a fixed rubric. The two arms scored almost the same: 139 and 140 out of 144. The model already caught the three traps on its own; with the skill it stated them more firmly and added more working detail. This small test does not show an accuracy gain, and live retrieval, where the source guides should matter most, wasn't tested. Check dates, coverage and source notes before you publish a number.
 
 ## About the project
 
