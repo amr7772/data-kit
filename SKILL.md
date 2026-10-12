@@ -4,7 +4,7 @@ description: "حقيبة البيانات: استخدمها حين يسأل ال
 license: MIT
 metadata:
   author: "عمرو العراقي — إنفوتايمز (InfoTimes)"
-  version: "0.2.1"
+  version: "0.3.0"
   tested: "2026-10-11"
   companion: "كتاب صحافة البيانات — عمرو العراقي"
 ---
@@ -86,6 +86,8 @@ metadata:
 
 ### ١. البنك الدولي — مؤشرات التنمية
 
+التوثيق: https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation
+
 ```
 https://api.worldbank.org/v2/country/EGY;JOR;MAR/indicator/FP.CPI.TOTL.ZG?format=json&date=2022:2024&per_page=100
 ```
@@ -99,6 +101,8 @@ https://api.worldbank.org/v2/country/EGY;JOR;MAR/indicator/FP.CPI.TOTL.ZG?format
 
 ### ٢. البنك الدولي — منصة الفقر وعدم المساواة (PIP)
 
+التوثيق: https://pip.worldbank.org/api
+
 ```
 https://api.worldbank.org/pip/v1/pip?country=EGY&year=all&povline=3&ppp_version=2021&format=json
 ```
@@ -109,6 +113,8 @@ https://api.worldbank.org/pip/v1/pip?country=EGY&year=all&povline=3&ppp_version=
 - السنوات هنا سنوات مسوح فعلية، وهي متباعدة.
 
 ### ٣. صندوق النقد الدولي — DataMapper
+
+التوثيق: https://www.imf.org/external/datamapper/api/help
 
 ```
 https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH
@@ -122,6 +128,8 @@ https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH
 
 ### ٤. منظمة الصحة العالمية — GHO
 
+التوثيق: https://www.who.int/data/gho/info/gho-odata-api
+
 ```
 https://ghoapi.azureedge.net/api/WHOSIS_000001?$filter=SpatialDim eq 'EGY' and Dim1 eq 'SEX_BTSX'
 ```
@@ -133,6 +141,8 @@ https://ghoapi.azureedge.net/api/WHOSIS_000001?$filter=SpatialDim eq 'EGY' and D
 
 ### ٥. المفوضية السامية لشؤون اللاجئين — UNHCR
 
+التوثيق: https://api.unhcr.org/docs/refugee-statistics.html
+
 ```
 https://api.unhcr.org/population/v1/population/?year=2024&coa=LBN&cf_type=ISO
 ```
@@ -143,6 +153,8 @@ https://api.unhcr.org/population/v1/population/?year=2024&coa=LBN&cf_type=ISO
 
 ### ٦. أهداف التنمية المستدامة — UN SDG
 
+التوثيق: https://unstats.un.org/sdgapi/swagger/
+
 ```
 https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&areaCode=818&pageSize=100
 ```
@@ -151,6 +163,8 @@ https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&areaCode
 - مفيدة للمقارنة مع PIP، لكنها قد تتأخر عنها في تحديث خط الفقر. إن اختلف الرقمان فاعتمد PIP واذكر الفرق.
 
 ### ٧. منظمة العمل الدولية — ILOSTAT
+
+التوثيق: https://ilostat.ilo.org/data/bulk/
 
 ```
 https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_RT_A&ref_area=EGY&sex=SEX_T&classif1=AGE_YTHADULT_Y15-24&timefrom=2015&format=.csv
@@ -162,6 +176,8 @@ https://rplumber.ilo.org/data/indicator/?id=UNE_DEAP_SEX_AGE_RT_A&ref_area=EGY&s
 
 ### ٨. منصة البيانات الإنسانية — HDX
 
+التوثيق: https://data.humdata.org/faqs/devs
+
 ```
 https://data.humdata.org/api/3/action/package_search?q=sudan displacement&rows=10
 ```
@@ -171,6 +187,8 @@ https://data.humdata.org/api/3/action/package_search?q=sudan displacement&rows=1
 
 ### ٩. Our World in Data
 
+التوثيق: https://docs.owid.io/projects/etl/api/chart-api/
+
 ```
 https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty.csv?country=EGY~MAR&csvType=filtered&useColumnShortNames=true
 ```
@@ -179,6 +197,8 @@ https://ourworldindata.org/grapher/share-of-population-in-extreme-poverty.csv?co
 - **فخ مُختبَر:** في سلسلة الفقر، قيمة مصر لسنة ٢٠٢٥ (١٫٣٧٪) منقولة من مسح ٢٠٢١، والعمود `original_year` يكشف ذلك. لا تكتب «في ٢٠٢٥».
 
 ### ١٠. UN Comtrade — المعاينة المجانية
+
+التوثيق: https://comtradedeveloper.un.org/
 
 ```
 https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=818&period=2023&partnerCode=0&flowCode=X&cmdCode=TOTAL
@@ -191,6 +211,8 @@ https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=818&period=2023
 
 ### ١١. KAPSARC — بوابة بيانات مركز الملك عبدالله للدراسات والبحوث البترولية
 
+التوثيق: https://datasource.kapsarc.org/api/explore/v2.1/console
+
 ```
 https://datasource.kapsarc.org/api/explore/v2.1/catalog/datasets?limit=20&where=search("population")
 https://datasource.kapsarc.org/api/explore/v2.1/catalog/datasets/{dataset_id}/records?limit=100
@@ -201,6 +223,8 @@ https://datasource.kapsarc.org/api/explore/v2.1/catalog/datasets/{dataset_id}/re
 
 ### ١٢. بوابة البيانات المفتوحة — قطر
 
+التوثيق: https://www.data.gov.qa/
+
 ```
 https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?limit=20&where=search("population")
 ```
@@ -210,6 +234,8 @@ https://www.data.gov.qa/api/explore/v2.1/catalog/datasets?limit=20&where=search(
 
 ### ١٣. بوابة البيانات المفتوحة — البحرين
 
+التوثيق: https://www.data.gov.bh/
+
 ```
 https://www.data.gov.bh/api/explore/v2.1/catalog/datasets?limit=20
 ```
@@ -217,6 +243,8 @@ https://www.data.gov.bh/api/explore/v2.1/catalog/datasets?limit=20
 - نفس الواجهة. المجموعات غالبًا من هيئة المعلومات والحكومة الإلكترونية، وكثير منها مقسّم حسب الجنسية (بحريني / غير بحريني).
 
 ### ١٤. NASA POWER — المناخ والطاقة
+
+التوثيق: https://power.larc.nasa.gov/docs/services/api/
 
 ```
 https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M,PRECTOTCORR&community=RE&latitude=30.04&longitude=31.24&start=2015&end=2024&format=JSON
@@ -228,6 +256,8 @@ https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M,PRECTOTCOR
 
 ### ١٥. هيئة المسح الجيولوجي الأمريكية — الزلازل
 
+التوثيق: https://earthquake.usgs.gov/fdsnws/event/1/
+
 ```
 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-02-01&endtime=2023-02-10&minmagnitude=6&minlatitude=12&maxlatitude=38&minlongitude=-18&maxlongitude=60
 ```
@@ -237,6 +267,8 @@ https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-0
 
 ### ١٦. الجهاز المركزي للتعبئة العامة والإحصاء — مصر
 
+التوثيق: https://www.capmas.gov.eg/
+
 - `https://www.capmas.gov.eg/` — لا توجد واجهة برمجية عامة.
 - النشرات الشهرية (التضخم، التجارة) والسنوية تُنشر جداول Excel أو PDF. بعض المحتوى يحتاج تسجيل دخول.
 - الطريقة: حدد النشرة، نزّل الملف، ثم نظّف الجدول. توقّع رؤوسًا مدمجة وأرقامًا عربية مشرقية (٠-٩) وجداول متعددة في الورقة نفسها.
@@ -244,7 +276,9 @@ https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-0
 
 ### ١٧. بوابة التنمية العربية — الإسكوا
 
-- `https://data.unescwa.org/` — بوابة تصفح فيها بيانات الدول ومؤشرات أهداف التنمية وأدوات سياسات.
+التوثيق: https://dataportal.unescwa.org/
+
+- `https://dataportal.unescwa.org/` — بوابة تصفح فيها بيانات الدول ومؤشرات أهداف التنمية وأدوات سياسات.
 - استخدمها للاستكشاف والمقارنة الإقليمية، ثم ارجع إلى المصدر الأصلي لكل مؤشر قبل النشر.
 
 ## ٧. بيانات الأقمار الصناعية
@@ -254,6 +288,8 @@ https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-0
 البحث في الكتالوجات أدناه (STAC) لا يحتاج مفتاحًا في الغالب. التنزيل أحيانًا يحتاج حسابًا مجانيًا، وذلك مذكور عند كل مصدر. المنطقة تُحدَّد بـ `bbox` بالترتيب: غرب، جنوب، شرق، شمال. المثال في كل الطلبات القاهرة: `31.1,29.9,31.4,30.2`.
 
 ### ١٨. Microsoft Planetary Computer — كتالوج STAC
+
+التوثيق: https://planetarycomputer.microsoft.com/docs/quickstarts/reading-stac/
 
 ```
 https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-2-l2a&bbox=31.1,29.9,31.4,30.2&datetime=2026-09-01/2026-09-30&limit=5
@@ -268,6 +304,8 @@ https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=sentinel-
 
 ### ١٩. Earth Search (Element 84 على AWS)
 
+التوثيق: https://element84.com/earth-search/
+
 ```
 https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-l2a&bbox=31.1,29.9,31.4,30.2&datetime=2026-09-01T00:00:00Z/2026-09-30T23:59:59Z&limit=5
 ```
@@ -276,6 +314,8 @@ https://earth-search.aws.element84.com/v1/search?collections=sentinel-2-l2a&bbox
 - فيه أيضًا `landsat-c2-l2` و`sentinel-1-grd` ونموذج الارتفاعات `cop-dem-glo-30`.
 
 ### ٢٠. Copernicus Data Space Ecosystem
+
+التوثيق: https://documentation.dataspace.copernicus.eu/APIs/STAC.html
 
 ```
 https://catalogue.dataspace.copernicus.eu/stac/collections/sentinel-2-l2a/items?bbox=31.1,29.9,31.4,30.2&datetime=2026-09-01T00:00:00Z/2026-09-30T23:59:59Z&limit=5
@@ -287,6 +327,8 @@ https://catalogue.dataspace.copernicus.eu/odata/v1/Products?$filter=contains(Nam
 
 ### ٢١. NASA Black Marble — الأضواء الليلية
 
+التوثيق: https://www.earthdata.nasa.gov/data/projects/black-marble
+
 ```
 https://cmr.earthdata.nasa.gov/search/granules.json?short_name=VNP46A2&point=31.24,30.04&temporal=2026-08-01T00:00:00Z,2026-08-05T00:00:00Z&page_size=5
 ```
@@ -297,6 +339,8 @@ https://cmr.earthdata.nasa.gov/search/granules.json?short_name=VNP46A2&point=31.
 - سلسلة البنك الدولي القديمة (Light Every Night) تتوقف عند ٢٠٢٠، وبيانات DMSP قبل ٢٠١٢ لا تُقارن بـ VIIRS.
 
 ### ٢٢. NASA GIBS — صور يومية جاهزة
+
+التوثيق: https://nasa-gibs.github.io/gibs-api-docs/
 
 ```
 https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/VIIRS_SNPP_CorrectedReflectance_TrueColor/default/2026-09-15/250m/{z}/{y}/{x}.jpg
@@ -314,6 +358,8 @@ https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?SERVICE=WMS&REQUEST=Ge
 
 ### ٢٣. NASA FIRMS — الحرائق النشطة
 
+التوثيق: https://firms.modaps.eosdis.nasa.gov/api/area/
+
 ```
 https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_SNPP_NRT/21,9,39,23/1
 ```
@@ -323,6 +369,8 @@ https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_SNPP_NRT/21,9,
 - **فخاخ:** كل نقطة بكسل ساخن (٣٧٥ مترًا أو كيلومتر)، لا حدود حريق. الشعلات الصناعية تعطي نتائج كاذبة، فصفِّ بحقل `confidence`. بيانات NRT السريعة تُستبدل لاحقًا بنسخة نهائية.
 
 ### ٢٤. FAO WaPOR — المياه والزراعة من الفضاء
+
+التوثيق: https://www.fao.org/in-action/remote-sensing-for-water-productivity/wapor-data-access/en
 
 ```
 https://data.apps.fao.org/gismgr/api/v2/catalog/workspaces/WAPOR-3/mapsets
@@ -334,6 +382,8 @@ https://data.apps.fao.org/gismgr/api/v2/catalog/workspaces/WAPOR-3/mapsets
 
 ### ٢٥. GHSL وWorldPop — السكان والعمران على الشبكة
 
+التوثيق: https://human-settlement.emergency.copernicus.eu/download.php
+
 ```
 https://hub.worldpop.org/rest/data/pop/wpgp?iso3=EGY
 https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/
@@ -344,6 +394,8 @@ https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/
 
 ### ٢٦. JRC Global Surface Water — المسطحات المائية منذ ١٩٨٤
 
+التوثيق: https://global-surface-water.appspot.com/download
+
 ```
 https://storage.googleapis.com/water-world/tiles2024/occurrence/{z}/{x}/{y}.png
 ```
@@ -352,6 +404,8 @@ https://storage.googleapis.com/water-world/tiles2024/occurrence/{z}/{x}/{y}.png
 - البلاطات صور ملوّنة لا قيم. للأرقام نزّل ملفات GeoTIFF من صفحة التنزيل. نسخة Planetary Computer تتوقف عند ٢٠٢٠.
 
 ### ٢٧. Copernicus EMS وUNOSAT — خرائط الأضرار
+
+التوثيق: https://mapping.emergency.copernicus.eu/
 
 ```
 https://rapidmapping.emergency.copernicus.eu/backend/dashboard-api/public-activations/?code=EMSR696
@@ -362,6 +416,8 @@ https://data.humdata.org/organization/unosat
 - **فخاخ:** كل خريطة لقطة من تاريخ صورة واحدة. درجات الضرر محددة (مدمّر، شديد، متوسط، محتمل)، فانقلها كما هي. «لم تُنتج» تعني لا صورة صالحة، لا «لا ضرر». تحقق من تاريخ آخر تحديث في HDX.
 
 ### ٢٨. Open-Meteo — الطقس التاريخي (ERA5)
+
+التوثيق: https://open-meteo.com/en/docs/historical-weather-api
 
 ```
 https://archive-api.open-meteo.com/v1/archive?latitude=30.04&longitude=31.24&start_date=2025-08-01&end_date=2025-08-31&daily=temperature_2m_max,precipitation_sum&timezone=Africa/Cairo

@@ -1,51 +1,95 @@
-# Data Kit (حقيبة البيانات)
+![حقيبة البيانات · Data Kit: 28 free institutional data sources](assets/banner.svg)
 
-A skill for Claude Code and Codex that helps journalists get numbers from free institutional data sources and check them before publishing.
+**28 free institutional data sources for Claude Code and Codex, 11 of them from satellites.**
 
-You ask a question in plain language, in Arabic or English. The skill picks the source, builds the request, fetches the data and then runs the checks a data editor would run: what the indicator actually measures, which year a number really belongs to, breaks in the series, revisions, units. Every answer comes with an attribution line you can paste into a story and the exact request, so you can rerun it later.
+By [Amr Eleraqi](https://github.com/aeleraqi), InfoTimes · One SKILL.md · MIT · Version 0.3.0
 
-The instructions in `SKILL.md` are written in Arabic.
+[**Download SKILL.md**](https://raw.githubusercontent.com/amr7772/data-kit/main/SKILL.md) · [Read the file](SKILL.md) · [See the examples](https://amr7772.github.io/data-kit/#examples) · [Browse sources](https://amr7772.github.io/data-kit/#sources)
 
-## Sources (28)
+Ask a question the way you'd ask a colleague, in Arabic or English. The skill picks an institutional source, builds the request, fetches the data, and then checks it the way a data editor would: what the indicator measures, which year a number really belongs to, breaks in the series, revisions, units. Every answer ends with an attribution line you can paste into a story and the exact request, so you can run it again next month.
 
-**Economy and development:** World Bank, World Bank PIP (poverty), IMF DataMapper, WHO GHO, UNHCR, UN SDG, ILOSTAT, HDX, Our World in Data, UN Comtrade, KAPSARC, Qatar and Bahrain open data portals, NASA POWER, USGS earthquakes, CAPMAS (Egypt), ESCWA Arab Development Portal.
+The instructions in `SKILL.md` are written in Arabic. The sources lean towards Egypt, the Gulf, the Levant and North Africa, but most of them cover every country.
 
-**Satellite and Earth observation:** Microsoft Planetary Computer, Earth Search (AWS), Copernicus Data Space, NASA Black Marble night lights, NASA GIBS, NASA FIRMS fires, FAO WaPOR, GHSL and WorldPop, JRC Global Surface Water, Copernicus EMS and UNOSAT damage maps, Open-Meteo (ERA5).
+## Repeat an analysis
 
-Most requests were tested on 11 October 2026. The file marks the ones that need a free key or could not be tested.
+Three examples come with real responses, the calculation and a script you can run without an account or key:
 
-## A few traps it catches
+| Question | Example |
+| --- | --- |
+| Why does Egypt's inflation differ between the World Bank and the IMF? | [Inflation: calendar year vs fiscal year](examples/inflation-fiscal-year/README.md) |
+| What share of Egyptians live in extreme poverty now? | [Poverty: a 2025 figure from a 2021 survey](examples/poverty-carried-forward/README.md) |
+| Can I show the blackout in Gaza from space? | [Night lights: a map from NASA GIBS](examples/night-lights/README.md) |
 
-- The IMF reports Egypt by fiscal year (July to June) and the World Bank by calendar year. Egypt's 2023 inflation is 24.4% in one and 33.9% in the other.
-- Our World in Data shows a 2025 poverty figure for Egypt that comes from a 2021 survey. The `original_year` column gives it away.
-- ILOSTAT flags a series break (`obs_status = B`) in Egypt's 2024 youth unemployment figure.
-- The cloud cover on a Sentinel-2 scene is for the whole 110 km tile, not for your area.
-- Night-light images change with the moon. To compare before and after, use the same layer, box and size, and pick two new-moon nights.
+Each script fetches live data when you run it and can also run on its saved, dated snapshot with `--offline`. Nothing refreshes in the background. The skill itself doesn't need these scripts or any other file.
 
-## Example: a map from space
+## Start with a question
 
-Asked for a map of the blackout in Gaza after 7 October 2023, the skill pulls two NASA GIBS night-light images of the same area, on two new-moon nights: 15 September and 13 November 2023. Gaza's coast is lit in the first and almost dark in the second. The project page shows both. The skill also says what the images can't do: they are for display, and a number like "light fell by X%" needs Black Marble's corrected monthly values.
+> كم بلغ التضخم في مصر والأردن والمغرب منذ ٢٠٢٠؟
+> How has inflation in Egypt, Jordan and Morocco changed since 2020?
 
-## Install
+The skill goes to the World Bank's consumer-price series. A request on **11 October 2026** returned 18 observations, last updated by the source on 8 October 2026:
 
-Claude Code:
+| Country | 2020 | 2022 | 2023 | 2024 | 2025 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Egypt | 5.0% | 13.9% | 33.9% | 28.3% | 14.1% |
+| Jordan | 0.3% | 4.2% | 2.1% | 1.6% | 1.8% |
+| Morocco | 0.7% | 6.7% | 6.1% | 1.0% | 0.7% |
 
+Annual averages, calendar years. The World Bank revises past years, so the answer records the update date next to the numbers. If you ask for a second source, the skill brings in the IMF and flags that Egypt's IMF series runs on fiscal years ([example](examples/inflation-fiscal-year/README.md)).
+
+The [saved response and exact request](data/verified-example.json) are in the repository. In a new conversation the assistant should fetch the data again rather than reuse this table.
+
+Then keep going: "add Tunisia", "show it as a line chart", "give me a CSV".
+
+## Install one file
+
+Save [SKILL.md](https://raw.githubusercontent.com/amr7772/data-kit/main/SKILL.md) in your project:
+
+```text
+Claude Code  .claude/skills/data-kit/SKILL.md
+Codex        .agents/skills/data-kit/SKILL.md
 ```
-.claude/skills/data-kit/SKILL.md
+
+Invoke `/data-kit` in Claude Code or `$data-kit` in Codex, followed by your question. [Installation details](docs/INSTALL.md) cover personal install paths and the sources that need keys.
+
+Your session needs a tool that can fetch URLs or make HTTP requests, with network access allowed.
+
+## Sources and current checks
+
+**Economy and society (17):** World Bank, World Bank PIP, IMF DataMapper, WHO, UNHCR, UN SDG, ILOSTAT, HDX, Our World in Data, UN Comtrade, KAPSARC, the Qatar and Bahrain open data portals, NASA POWER, USGS earthquakes, CAPMAS and the ESCWA Arab Development Portal.
+
+**Satellites and Earth observation (11):** Microsoft Planetary Computer, Earth Search, Copernicus Data Space, NASA Black Marble, NASA GIBS, NASA FIRMS, FAO WaPOR, GHSL and WorldPop, JRC Global Surface Water, Copernicus EMS and UNOSAT, and Open-Meteo (ERA5).
+
+The full list, with operator, access route, documentation link and the date each request was last tested, is in [data/catalogue.json](data/catalogue.json).
+
+On **11 October 2026**, most requests returned usable responses. Two were not tested: NASA FIRMS needs a free key, and Open-Meteo was unreachable from the test environment. CAPMAS and the ESCWA portal have no public API and are marked as manual downloads. Copernicus and NASA Earthdata searches are open, but downloading files needs a free account.
+
+Some traps the file teaches, each found while testing:
+
+- The IMF reports Egypt by fiscal year; the World Bank by calendar year.
+- Our World in Data fills recent years with older survey values; `original_year` shows it.
+- ILOSTAT marks a break in Egypt's youth unemployment series in 2024 (`obs_status = B`).
+- A Sentinel-2 scene's cloud cover is for the whole 110 km tile, not your area.
+- In WMS 1.3.0 the map box is latitude first; in STAC it's longitude first.
+
+No formal evaluation of the skill has been run yet. The tests check the examples, the catalogue and the helper code, not how well an assistant follows the instructions. Check dates, coverage and source notes before you publish a number.
+
+## About the project
+
+This file collects the sources I point students and journalists to, and the checks I ask them to run before a number goes into a story, written so an assistant can follow them. It accompanies my data journalism book.
+
+The idea of a single-file data skill comes from Ievgen Kylymnyk's [Global Data Kit](https://github.com/klmnki/public-kit). The text, sources, examples and tests here were written separately. None of the listed institutions endorse the project.
+
+[Send a correction or a tested use case](CONTRIBUTING.md). Instructions and code are [MIT](LICENSE). Provider data keep their own terms; see [NOTICE](NOTICE.md).
+
+## Run the website
+
+Node.js 22 or later. No npm dependencies.
+
+```sh
+npm test
+npm run build
+npm run preview
 ```
 
-Codex:
-
-```
-.agents/skills/data-kit/SKILL.md
-```
-
-Then ask your question, for example: "How has inflation in Egypt, Jordan and Morocco changed since 2022?"
-
-`index.html` is the project page. It reads `SKILL.md` from the same folder, so it also works on GitHub Pages.
-
-## Credits
-
-By Amr Eleraqi, InfoTimes. A companion to his data journalism book. The idea comes from the Global Data Kit project (MIT). The content, sources and tests here were written from scratch.
-
-MIT License.
+Open `http://127.0.0.1:4188`. The build copies `SKILL.md` into the site unchanged and writes its SHA-256 checksum. Pushing to `main` publishes the site to GitHub Pages.
