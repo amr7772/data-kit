@@ -1,6 +1,6 @@
 # Install Data Kit
 
-Download [SKILL.md](https://raw.githubusercontent.com/amr7772/data-kit/main/SKILL.md) and save it in a folder named `data-kit`. Keep the filename in capitals. The file holds the instructions, 28 source guides, example requests and the licence. It needs no other files.
+Download [SKILL.md](https://raw.githubusercontent.com/aeleraqi/data-kit/main/SKILL.md) and save it in a folder named `data-kit`. Keep the filename in capitals. The file holds the instructions, 28 source guides, example requests and the licence. It needs no other files.
 
 | Client | In one project | For all your projects on this machine |
 | --- | --- | --- |
